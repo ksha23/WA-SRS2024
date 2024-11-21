@@ -1,0 +1,12 @@
+\subsubsection{AV Mode Blue Light}
+\begin{itemize}
+    \item[AVL\_1] A set of AV Mode Blue Lights shall be mounted on the exterior of the vehicle or cart. These lights warn others around the vehicle that Autonomous Vehicle Mode has been activated. The light shall receive constant communication from the compute stack through CAN.
+    \begin{itemize}
+        \item[AVL\_1\_1] When the vehicle is in Autonomous Vehicle Mode, the light shall be turned on.
+        \item[AVL\_1\_2] When the vehicle is turned off or is operating in Manual Mode, the light shall be off.
+        \item[AVL\_1\_3] In the case where CAN communication is lost, the light shall flash at a frequency of 1Hz.
+    \end{itemize}
+    \item[AVL\_2] The light shall be visible from at least 200 ft on all sides. Mounting solutions are determined by the team.
+    \item[AVL\_3] A second AV Mode Light shall be mounted on the interior of the vehicle on the dashboard. This light serves as an indicator for passengers that the autonomous control system is currently in control. The light shall be visible by all occupants and shall be in sync with the exterior AV Mode Light.
+    \item[AVL\_4] The AV Mode Light Controller will send a CAN status message detailing the state of the light at a frequency of 10 Hz.
+\end{itemize}

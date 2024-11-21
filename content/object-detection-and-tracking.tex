@@ -1,0 +1,21 @@
+\subsubsection{Object Detection \& Tracking (ODT)}
+\begin{itemize}
+    \item[ODT\_1] The software shall detect static objects in the road within 40 meters and inside a 120° cone in front of the vehicle.
+    \begin{itemize}
+        \item[ODT\_1\_1] The type of static object shall be determined. The static object types that shall be identified are traffic barrels, traffic barricades, and railroad gates.
+        \item[ODT\_1\_2] Static objects determined to not be one of the types listed in ODT\_1\_1 shall be labeled "unknown", but shall still be mapped and avoided.
+        \item[ODT\_1\_3] The positions of detected static objects shall be determined with an accuracy of ± 1 meters.
+        \item[ODT\_1\_4] The widths and heights of detected static objects shall be determined with an accuracy of ± 0.2 meters.
+    \end{itemize}
+    \item[ODT\_2] The software shall detect dynamic objects in the road within 40 meters and inside a 120° cone in front of the vehicle.
+    \begin{itemize}
+        \item[ODT\_2\_1] The type of dynamic object shall be determined. The dynamic object types that shall be identified are pedestrians, vehicles, and deer.
+        \item[ODT\_2\_2] Dynamic objects determined to not be one of the types listed in ODT\_2\_1 shall be labeled "unknown", but still shall be mapped and avoided.
+        \item[ODT\_2\_3] The position of detected vehicles shall be determined with an accuracy of ± 1 meters laterally and longitudinally.
+        \item[ODT\_2\_4] The position of all other detected dynamic objects shall be determined with an accuracy of ± 1 meter laterally and longitudinally.
+        \item[ODT\_2\_5] The width and height, and depth (when applicable) of detected dynamic objects shall be determined with an accuracy of ± 0.2 meters.
+        \item[ODT\_2\_6] The relative velocity and real velocity of detected dynamic objects shall be determined with an accuracy of ± 1 m/s.
+        \item[ODT\_2\_7] The direction of travel of detected dynamic objects shall be determined with an accuracy of ± 30° relative to true north.
+    \end{itemize}
+    \item[ODT\_3] The software shall determine which lanes (if any) are blocked by objects in the road.
+\end{itemize}

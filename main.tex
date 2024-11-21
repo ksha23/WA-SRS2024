@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{svg}
+\usepackage{tabularx}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\title{
+{\includegraphics[width=4.5cm, height=3cm]{images/uwlogo.png}
+\includegraphics[width=3cm, height=2.5cm]{images/walogo.png}}
+\\
+{Software Requirements Specification | Year 4}
+}
+\author{E. Wiedemeier, P. Chen, S. Dabbara, S. Ashokkumar, \\ K. Sha,  K. Pachipala, R. Anandpara \\ \\ \textbf{University of Wisconsin-Madison}}
+\date{November 2024}
+
+\begin{document}
+
+\newpage
+\maketitle
+\tableofcontents
+
+\newpage
+\maketitle
+
+\section{Introduction}
+\subsection{Scope of these requirements}
+The WAutoDrive software stack for Year 4 is designed to handle the challenges here. We will discuss them separately.
+
+\subsubsection{MathWorks Simulation Challenge}
+The team designed scenarios to showcase the functions specified in the MathWorks Simulation Challenge scoring rubric, as well as to perform tasks for the control stack of the vehicle for the Dynamic Challenges.
+
+\underline{Inputs:}
+\begin{itemize}
+    \item Ground-truth lane marking data
+    \item Ground-truth object data
+    \item Ground truth vehicle state
+    \item Start point and end point
+\end{itemize}
+\underline{Outputs:}
+\begin{itemize}
+    \item High-level route
+    \item Target poses
+    \item Steering commands
+    \item Torque commands
+    \item Braking commands
+\end{itemize}
+
+\subsubsection{HMI Challenge}
+HMI challenge details here 
+
+\underline{Inputs:}
+\begin{itemize}
+    \item Item 1
+\end{itemize}
+\underline{Outputs:}
+\begin{itemize}
+    \item Item 1
+\end{itemize}
+
+\subsubsection{V2X Challenge}
+V2X challenge details here
+
+\underline{Inputs:}
+\begin{itemize}
+    \item Item 1
+\end{itemize}
+\underline{Outputs:}
+\begin{itemize}
+    \item Item 1
+\end{itemize}
+
+\subsubsection{Design Your Own Challenge}
+\underline{Inputs:}
+\begin{itemize}
+    \item Camera data
+    \item LiDAR data
+    \item IMU data
+    \item GPS data
+    \item HD map data
+\end{itemize}
+\underline{Outputs:}
+\begin{itemize}
+    \item Each speed limit sign pose and number
+    \item Each stop sign pose
+    \item Each traffic signal pose and state
+    \item Limit/lane lines pose and type
+    \item Railroad crossings
+    \item Correct control outputs
+\end{itemize}
+
+\subsubsection{Localization Challenge}
+Localization Challenge description here 
+\underline{Inputs:}
+\begin{itemize}
+    \item Camera data
+    \item LiDAR data
+    \item IMU data
+    \item GPS data
+    \item HD map data
+\end{itemize}
+\underline{Outputs:}
+\begin{itemize}
+    \item Each speed limit sign pose and number
+    \item Each roadway object's pose and twist
+    \begin{itemize}
+        \item Traffic barrels/barricade
+        \item Vehicles
+    \end{itemize}
+    \item Limit/lane lines pose and type
+    \begin{itemize}
+        \item Lanes formed by barrels
+    \end{itemize}
+    \item Railroad crossings
+    \item Correct control outputs
+\end{itemize}
+
+\subsubsection{99\% Buy Off Challenge}
+99\% Buy off challenge details here 
+
+\underline{Inputs:}
+\begin{itemize}
+    \item Item 1
+\end{itemize}
+\underline{Outputs:}
+\begin{itemize}
+    \item Item 1
+\end{itemize}
+
+% //////////////////////////////////////////////////////////////
+
+\section{Assumptions \& Dependencies}
+\begin{itemize}
+    \item[AD\_1] The team assumes weather is non-invasive. We define non-invasive as: Not actively snowing, heavily raining, foggy and not excessively dark (visibility shall be more than one mile.)
+    \item[AD\_2] It is assumed that the vehicle software stack will be used during daylight hours.
+    \item[AD\_3] Unless directly specified by the rules, it is assumed a reliable GPS signal is available at all times, where the environment around the car/cart does not play a role in reducing or diminishing the signal.
+    \item[AD\_4] It is assumed that the test facility for the competition shall be MCity and all features are present in the documentation provided by the AutoDrive Challenge.
+    \item[AD\_5] All units used by the team, where the rules allow it, will be in SI units.
+    \item[AD\_6] It is assumed that the required field of view in use for distance reporting is within 90 degrees, which is the field of view of the Cepton Vista X90 provided for the competition.
+\end{itemize}
+
+% //////////////////////////////////////////////////////////////
+
+\section{System Features and Requirements}
+
+\subsection{Functional Requirements}
+
+\input{content/vehicle-dynamics}
+\input{content/sign-and-lane-detection}
+\input{content/object-detection-and-tracking}
+\input{content/positioning-and-route-planning}
+\input{content/av-mode-blue-light}
+\input{content/v2x}
+
+% //////////////////////////////////////////////////////////////
+
+\subsection{Non-Competition Requirements}
+\begin{itemize}
+    \item[NCR\_1] The Perception Cart must be collapsible and packed into a shipping container in 30 minutes. This includes unmounting and storing the sensors and their fixtures inside the cart for shipping.
+    \item[NCR\_2] The control stack for the MathWorks Simulation Challenge shall be compatible with the computing hardware on the Perception Cart and the Chevy Bolt. As a result of this, the control stack will be usable in upcoming competition years.
+    \item[NCR\_3] The Perception Cart must run for at least 2 hours on battery power. The Perception Cart must be self contained, meaning you can edit and run code without the need for external power, cords (e.g. ethernet), and must have a monitor.
+    \item[NCR\_4] The sensor mounts should be easily transferable between the Perception Cart and the Chevy Bolt. This will allow for minimal time loss and easier quick testing on the Perception Cart when necessary.
+    \item[NCR\_5] The Chevy Bolt shall be equipped with two additional internal monitors. One monitor shall be mounted at the front passenger seat. The second monitor shall be mounted at the rear seat behind the driver. Both must allow for a person to simultaneously be seated. This will allow for three people to sit in the vehicle, in addition to the safety driver, with all three passengers being able to contribute to testing.
+    \item[NCR\_6] The Intel server shall be set up such that members will be able to remote into it (SSH, VNC).
+\end{itemize}
+
+% //////////////////////////////////////////////////////////////
+
+\subsection{External Interface Requirements}
+\begin{itemize}
+    \item[EIR\_1] User Interfaces: For development and debugging, we will interface with the server through IPMI. For competition, we will interface with a dedicated Human-Machine Interface (HMI) per per competition guidelines
+    \item[EIR\_2] Computing Hardware Interfaces: The software stack shall run on an Intel-provided server. The computer shall function as a Linux box, and be accessible remotely via Secure Shell (SSH). Available ports should consist of at least four independent USB ports, a video output port, an ethernet port, and be WiFi enabled.
+    \item[EIR\_3] Mounting Hardware Interfaces: The mounts for our sensors and Autonomous Blue Light shall not interfere with scoring equipment provided by competition scorers.
+    \item[EIR\_4] Out-going Communication Interfaces: The CAN Bus Wiring shall contain at least one standard OBD-II port that is compatible with off-the-shelf debugging hardware which allows attachment of competition scoring hardware and allow the team to analyze and capture CAN Bus traffic with NEO VI Interface Box.
+    \item[EIR\_5] Inter-Module Communication Interfaces: All the hardware designed by the team(e.g. HMI, ABL) will use a 4-pin locking connector that connects to 4 custom CAN Bus Splitters. Each Splitter hosts one of four CAN Bus Systems (HS,CE,LS,SC), the splitter shall have extra ports to allow for future hardwares.
+    \end{itemize}
+
+% //////////////////////////////////////////////////////////////
+
+\subsection{Conclusion}
+The WAutoDrive software stack for Year 3 provides a comprehensive solution for handling multiple dynamic driving challenges. The Intersection Challenge, Construction Challenge, and MathWorks Simulation Challenge are each addressed with specific functionalities, ensuring robust and reliable operation in diverse scenarios.
+
+Assumptions such as clear weather, daylight driving, and consistent GPS signals allow the software stack to focus on functional requirements. These include vehicle dynamics, traffic light and sign detection, and object tracking, ensuring safe and efficient navigation through various environments.
+
+The stack's positioning and route planning components implement state estimation, tiered motion planning, and route adjustments in real time. This enables seamless navigation through different driving conditions and obstacles. Safety features such as AV Mode Blue Light and V2X functionality contribute to reliable autonomous vehicle operation.
+
+Non-competition requirements, including portability of the perception cart, software compatibility, and collapsibility, ensure effective testing and evaluation of the stack's components. External interface requirements guarantee seamless integration of the software stack with both hardware and scoring mechanisms, completing the WAutoDrive stack for competition and beyond. 
+
+\section{Appendix 1: Test Results}
+In this appendix, your team will include the test results for each and every requirement in your SRS, in
+table format. This table is required to include the following columns:
+a) SRS Requirement Identifier – list the traceable requirement identifier. Requirement itself does
+not need restated. (Draft and Final Required)
+b) Test Method – did you test this requirement on vehicle? On a test bench? Via simulation?
+(Draft and Final Required)
+c) Pass or Fail or Unable to Test (Final Required)
+d) Comments with respect to failure – why did the test case fail? Does the requirement need
+updated? Is it OK to proceed with this failure? Was there a test setup issue? (Final Required)
+Finally, please include a paragraph summarizing your testing. Were there any surprises? Did you need
+to update any requirements to be testable? Add more requirements for coverage? What test method
+was the most valuable?
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+Identifier & Test Method & Pass/Fail & Comments \\ \hline
+Data 1   & Data 2   & Data 3   & Data 4   \\ \hline
+Data 5   & Data 6   & Data 7   & Data 8   \\ \hline
+Data 9   & Data 10  & Data 11  & Data 12  \\ \hline
+\end{tabularx}
+\caption{Requirements test results}
+\label{tab:four-column-table}
+\end{table}
+
+\section{Appendix 2: Open Source Software Disclosure Form}
+In this appendix, you will attach your team's open-source software disclosure form using the provided
+template. Please provide a detailed list of all the software packages/bundles that you leverage in your
+software system but did not develop. This should include, but is not limited to, the operating system,
+ROS/dSpace packages used directly, and any code used to run your vehicle software system that was
+not developed by your team.
+Please ensure that your submission follows the OSS disclosure template Excel sheet and that all
+columns are displayed on a single page.
+
+
+\end{document}

@@ -1,0 +1,25 @@
+\subsubsection{Traffic Light, Sign and Lane Detection (TSLD)}
+\begin{itemize}
+    \item[TSLD\_1] The software shall detect all visible traffic lights within 40 meters and a 120° cone in front of the vehicle, regardless of traffic light orientation and type.
+    \begin{itemize}
+        \item[TSLD\_1\_1] The software shall quickly and correctly determine the state of each detected traffic light, including flashing lights and including following a color transition.
+        \item[TSLD\_1\_2] The position of all traffic lights shall be determined with an accuracy of ± 1 meters laterally, longitudinally, and vertically (height above the ground).
+        \item[TSLD\_1\_3] The most relevant traffic light shall be determined based on the Ego-Lane.
+    \end{itemize}
+    \item[TSLD\_2] The software shall detect all signage visible to the car within 40 meters and inside a 120° cone in front of the vehicle. 
+    \begin{itemize}
+        \item[TSLD\_2\_1] The sign type shall be determined. The sign types that shall be identified are stop, yield, speed limit, railroad crossing, left turn only, and right turn only.
+        \item[TSLD\_2\_2] Signs determined to not be one of the types listed in TSLD\_2\_1 shall be labeled "unknown".
+        \item[TSLD\_2\_3] The distance to the sign shall also be determined, with an accuracy of ± 1 meters laterally and longitudinally.
+        \item[TSLD\_2\_4] For speed limit signs, the software shall determine the most relevant speed limit sign and extract the current speed limit.
+    \end{itemize}
+    \item[TSLD\_3] The software shall detect all lane lines and limit lines in the roadway around the vehicle.
+    \begin{itemize}
+        \item[TSLD\_3\_1] All visible lane lines on the same side of the road as the vehicle shall be detected.
+        \item[TSLD\_3\_2] The horizontal distance to detected lane lines shall be determined with an accuracy of ± 0.1 meters.
+        \item[TSLD\_3\_3] The lane line color (white or yellow) and type (dashed or solid) shall also be determined.
+        \item[TSLD\_3\_4] All limit lines within 10 meters of the front of the vehicle shall be identified.
+        \item[TSLD\_3\_5] The distance to limit lines shall be determined with an accuracy of ± 1 meters laterally and ± 0.5 meters longitudinally.
+        \item[TSLD\_3\_6] The sign associated with the detected limit line shall be determined, when applicable.
+    \end{itemize}
+\end{itemize}
